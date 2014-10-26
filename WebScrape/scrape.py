@@ -2,12 +2,12 @@ import sys
 import requests
 import re
 import csv
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
 
 def scrape_class():
     url = "http://nook.cs.ucdavis.edu/cgi-bin/pipeline." \
-          "pl?_pipeline=/usr/ns-home/cgi-bin/modules/classes/13-14/spring-db.pl"
+          "pl?_pipeline=/usr/ns-home/cgi-bin/modules/classes/14-15/winter-db.pl"
 
     # spoof some headers so the request appears to be coming from a browser, not a bot
     headers = {

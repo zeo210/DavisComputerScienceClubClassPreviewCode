@@ -10,6 +10,10 @@ This program is available to be worked on for the Davis Computer Science Club to
 
 ==============================================
 Additional Notes:
+The Webscraper runs on Python 2. You will need to install pip, and have it install BeautifulSoup and requests.
+
+The Webscraper file needs to be modified to parse from the most recent quarter. ALSO!!! Webscraper parses through an obsolete page - a PDF parser will be created for presentations Spring 2015 and onwards.
+
 The CSV file created in the webscraper needs to be modified in the manner listed below, and then moved to the presenter program manually.
 
 CSV Modification:
