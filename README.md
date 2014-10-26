@@ -7,3 +7,11 @@ The Scraper is created in Python and uses the BeautifulSoup library to parse thr
 The Presenter is created in Processing and uses the Motion library to make a slideshow where each slide is a upcoming course (or possibly a custom slide). When the program starts it reads the CSV file and creates a slide object for every line in the CSV file. After the program finish reading the CSV file The Presenter then pops up an applet with a slide presenting information from the first line of the CSV file. The user use the left or right arrow keys to change the slide presenting different lines of the CSV file when needed.
 
 This program is available to be worked on for the Davis Computer Science Club to use in the future and will be updated whenever I have time add or clean up some code.
+
+==============================================
+Additional Notes:
+The CSV file created in the webscraper needs to be modified in the manner listed below, and then moved to the presenter program manually.
+
+CSV Modification:
+	Remove graduate course lines - this presentation is geared towards undergraduates.
+	If desired - manually add in EEC and GE courses, and other slides, as desired 

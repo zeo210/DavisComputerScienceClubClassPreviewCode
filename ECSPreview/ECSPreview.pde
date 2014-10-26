@@ -1,6 +1,6 @@
 //By:Romer Ibo
 //Presenation slides
-//  -Winter 2014 class preview
+//  -Fall 2014 class preview
 //
 
 import seltar.motion.*;
@@ -27,8 +27,8 @@ ArrayList<Course> courses;
 
 void setup()
 {
-  //size(displayWidth, displayHeight);
-  size(800,600);
+  //size(displayWidth, displayHeight); //Full Screen
+  size(800,600); //Miny
   if (frame != null) {
     frame.setResizable(true);
   }
@@ -36,6 +36,8 @@ void setup()
   notPressed = true;
   
   //appologies again
+  
+  /*
   l1Top = new Motion(2*width,0);
   l1Mid = new Motion(2*width,3*height/4);
   l1Bot = new Motion(2*width,height);
@@ -48,19 +50,36 @@ void setup()
   r2Top = new Motion(2*width,0);
   r2Mid = new Motion(2*width,3*height/4);
   r2Bot = new Motion(2*width,height);
+  */
+  
+  //Right ribbon corner values
+  l1Top = new Motion(4*width,0);            //top    left
+  l1Mid = new Motion(2*width,3*height/4);   //mid    left
+  l1Bot = new Motion(4*width,height);       //bottom left
+  r1Top = new Motion(2*width,0);            //top    right
+  r1Mid = new Motion(2*width,3*height/4);   //mid    right
+  r1Bot = new Motion(2*width,height);       //bottom right
+  
+  //Left ribbon corner values
+  l2Top = new Motion(3*width,0);            //top    left
+  l2Mid = new Motion(2*width,3*height/4);   //mid    left
+  l2Bot = new Motion(3*width,height);       //bottom left
+  r2Top = new Motion(2*width,0);            //top    right
+  r2Mid = new Motion(2*width,3*height/4);   //mid    right
+  r2Bot = new Motion(2*width,height);       //bottom right
   
   smooth();
 
-  //courses
+  //courses object array - panels
   courses = new ArrayList<Course>();
   
   courseCount = 0;
   
   courses.add(new Course("WELCOME!",
-                         "Spring 2014 Classes Preview",
-                         "W 6-8pm",
-                         1200+800+(courseCount++),
-                         "Kemper 1065",
+                         "Winter 2015 Classes Preview",
+                         "W 7-8:30pm",
+                         1200+800+(courseCount++), //ROMER What does this line do besides increment courseCount? 
+                         "Surge III ",
                          "The Davis Computer Science Club",
                          "Check-in! daviscdclub.org/here"));
   
@@ -105,19 +124,22 @@ void keyPressed(){
 void keyReleased(){
   notPressed = true;
 }
+//ribbon1 =0D237D
+//ribbon2 =#4967E1
 
+//gradient D0D8FB --->   7E94EE
 void enviornment(){
-  setGradient(0, 0, width, height, color(240), color(125));
+  setGradient(0, 0, width, height, color(0xD0,0xD8,0xFB), color(113,137,236));
   
   l1Top.followTo(8+(14*pos/courseCount),0);
   
   if (pos == 0){
-    l1Top.followTo(22*width/30,0);
+    l1Top.followTo(21.6*width/30,0);
     l1Mid.followTo(26*width/30,3*height/4);
-    l1Bot.followTo(17*width/30,height);
+    l1Bot.followTo(17.2*width/30,height);
     r1Top.followTo(24*width/30,0);
-    r1Mid.followTo(28*width/30,3*height/4);
-    r1Bot.followTo(20*width/30,height);
+    r1Mid.followTo(28*width/30,3*height/4-.02*height);
+    r1Bot.followTo(20.2*width/30,height);
   }
   else{
     l1Top.followTo(8*width/30,0);
@@ -134,16 +156,16 @@ void enviornment(){
   r1Mid.move();
   r1Bot.move();
   noStroke();
-  fill(100,150,208);
+  fill(0x49,0x67,0xe1);
   quad(l1Top.getX(),l1Top.getY(),l1Mid.getX(),l1Mid.getY(),r1Mid.getX(),r1Mid.getY(),r1Top.getX(),r1Top.getY());
-  fill(25,120,208);
+  fill(0x0d, 0x23, 0x7d);
   quad(l1Mid.getX(),l1Mid.getY(),l1Bot.getX(),l1Bot.getY(),r1Bot.getX(),r1Bot.getY(),r1Mid.getX(),r1Mid.getY());
   
   if (pos == 0){
-    l2Top.followTo(19*width/30,0);
-    l2Mid.followTo(23*width/30,3*height/4);
+    l2Top.followTo(18.2*width/30,0);
+    l2Mid.followTo(23*width/30,3*height/4+.02*height);
     l2Bot.followTo(13*width/30,height);
-    r2Top.followTo(21*width/30,0);
+    r2Top.followTo(20.6*width/30,0);
     r2Mid.followTo(25*width/30,3*height/4);
     r2Bot.followTo(16*width/30,height);
   }
