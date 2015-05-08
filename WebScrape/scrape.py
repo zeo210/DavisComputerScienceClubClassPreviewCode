@@ -2,72 +2,139 @@ import sys
 import requests
 import re
 import csv
+import math
 from bs4 import BeautifulSoup
+
+#[u'1:40 - 3:00 PM, TR\n', u'ECS 010\n', u'Intro to Programm', u'Butner, M ', u'9:00 - 9:50 AM, F\n']
+# USING PYTHON 3
+
 
 
 def scrape_class():
-    url = "http://nook.cs.ucdavis.edu/cgi-bin/pipeline." \
-          "pl?_pipeline=/usr/ns-home/cgi-bin/modules/classes/14-15/winter-db.pl"
+    r= (open('C:/Users/Pouneh/Desktop/DavisComputerScienceClubClassPreviewCode/table.html', 'r')).read()
 
-    # spoof some headers so the request appears to be coming from a browser, not a bot
-    headers = {
-        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5)",
-        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "accept-charset": "ISO-8859-1,utf-8;q=0.7,*;q=0.3",
-        "accept-encoding": "gzip,deflate,sdch",
-        "accept-language": "en-US,en;q=0.8",
-    }
+    soup = BeautifulSoup(r)
+    
+    row_results = soup.findAll('td',title='View Course Detail')
 
-    # make the request to the search url, passing in the the spoofed headers.
-    r = requests.get(url, headers=headers)  # assign the response to a variable r
+    global stripped_row
+    stripped_row=[]
+    for i in range(0,len(row_results)-1):
+        stripped_row.append(row_results[i].text)
 
-    # check the status code of the response to make sure the request went well
-    if r.status_code != 200:
-        print("request denied")
-        return
-    else:
-        print("scraping " + url)
+    global k
+    k= 0
 
-    soup = BeautifulSoup(r.text)
+    rowValues=[]
+    kval=[]
+    level =0;
+    global full_string
 
-    #get table header
-    header_results = soup.findAll('th')
-
-    #get table rows
-    row_results = soup.findAll('tr')
-
-    output_classes = open('classes.csv', "wb")
-    writer_classes = csv.writer(output_classes, delimiter=',')
-
-    #print headers
-    for header_result in header_results:
-        print header_result.text
-
-    writer_classes.writerow([header_results[0].text, header_results[1].text, header_results[3].text,
-                             header_results[5].text, header_results[6].text, "PREREQS"
-    ])
-
-    #break down each row and print each element in each row
-    for row_result in row_results:
-        sub_results = row_result.findAll('td')
-        length = len(sub_results)
-        print sub_results
-
-        if length == 8:
-            print "~~~~~~~~~~~~Adding Class"
-            writer_classes.writerow([sub_results[0].text, sub_results[1].text, sub_results[3].text,
-                                     sub_results[5].text, sub_results[6].text, None
-            ])
-            #matched = re.match("ECS%d%d%d")
-        elif length == 6:
-            print "~~~~~~~~~~~~Lab/Section/Discussion #TODO (OPTIONAL)"
+    while (k< len(stripped_row)):
+        maybeRow=casek0_1()
+        if (k%5 != 1 and level ==1):
+            rowValues.append(maybeRow)
+        elif (k%5 == 1 and len(maybeRow) > 2 and maybeRow[2] not in kval):
+            kval.append(maybeRow[2])
+            rowValues.append(maybeRow)
+            level =1
         else:
-            print "~~~~~~~~~~~~not using row, skipping"
-            continue
+            level =0
+     
 
-        #for sub_result in sub_results:
-        #    print sub_result.find(text=True)
+#start output to CSV stuff
+    output_classes=open('classes.csv', "wt", newline='', encoding='utf8')
+    writer_classes = csv.writer(output_classes , delimiter = ',')
+
+    headers = ["COURSE ","INSTRUCTOR","TITLE","TIME","ROOM"]
+
+    writer_classes.writerow([headers[0] , headers[1], headers[2] ,  headers[3], headers[4]])
+    writer_classes.writerow(['Announcements', '','','',''])
+
+
+
+    numClasses = math.floor(len(rowValues) /5)
+
+    for j in range(numClasses):
+        a = j*5
+        b = j*5 + 1
+        c = j*5 + 2
+        d = j*5 + 3
+        e = j*5 + 4
+        #                             course        instructor      title             time             room
+        writer_classes.writerow([rowValues[a][2], rowValues [d][2], rowValues [c][2], rowValues[e][3], rowValues[a][3]])
+
+            
+
 
     output_classes.close()
 
+
+#CRN, Time, and Dates , course number, location
+def casek0_1():
+    global k
+    rowcase=[]
+    full_string=stripped_row[k].strip('\n')
+    #print (full_string)
+   
+    #get CRN and date/time
+    rowValues=[]
+    b=0 #full_string traversed
+    value=""
+    for j in range(2):
+        value=""
+        #bypass blank space
+        while((ord(full_string[b]) <47) or ((ord(full_string[b])>57) and (ord(full_string[b]) <65)) or ord(full_string[b])>90):
+            b=b+1
+            if(b == len(full_string)-1):
+                break
+        #grab next CSV row value
+        while(b < len(full_string) and full_string[b] != '\n'):
+            #print(full_string[b])
+            value=value+(full_string[b])
+            b=b+1
+            if (b == len(full_string)-1):
+                break
+        #value=value+full_string[b]
+       #record next CSV row value
+        rowValues.append(value[0:b])
+
+    k=k+1
+    if (k < len(stripped_row)):
+        full_string=stripped_row[k].strip('\n')
+
+        #get course number and location
+        b=0 #full_string traversed
+        value=""
+        for j in range(2):
+            value=""
+            #bypass blank space
+            while((ord(full_string[b]) <47) or ((ord(full_string[b])>57) and (ord(full_string[b]) <65)) or ord(full_string[b])>90):
+                b=b+1
+                if(b == len(full_string)-1):
+                    break
+            #grab next CSV row value
+            while(b < len(full_string) and full_string[b] != '\n' ):
+                #print(full_string[b])
+                value=value+(full_string[b])
+                b=b+1
+                if (b == len(full_string)-1):
+                    break
+            
+            #value=value+full_string[b]
+           #record next CSV row value
+            rowValues.append(value[0:b])
+
+
+    return (rowValues)
+
 scrape_class()
+
+#k%5 
+# case 0: CRN, Time and Dates
+# case 1: Course, location
+# case 3: title
+# case 4: Instructor
+
+
+

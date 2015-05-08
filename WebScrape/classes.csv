@@ -1,27 +1,39 @@
-COURSE,INSTRUCTOR,TITLE,TIME,ROOM,PREREQS
-Announcements,,,,,
-ECS 10-A,"Nitta, Christopher",Basic Concepts of Computing,MWF 2:10p-3:00p,1002 Giedt,
-ECS 12,"Neff,Michael",Intro to Media Computation,TR 1:40p-3:00p,107 ArtAnx,
-ECS 15-A,"D'Souza, Raissa",Intro to Computers,TR 9:00a-10:20a,106 Wellman,
-ECS 20-A,"Bai, Zhaojun",Discrete Math for Computer Science,MWF 1:10p-2:00p,1003 Giedt,
-ECS 30-A,"Butner, Matt",Intro to Programming and Problem Solving,MWF 2:10p-3:00,1100 SocSci,
-ECS 40-A,"Davis, Sean",SW & Object-Oriented Programming,MWF 11:00a-11:50a,2 Wellman,
-ECS 60,"Davis, Sean",Data Structures and Programming,MWF 9:00a-9:50a,179 Chemistry,
-GEs,,General Education,,,
-MAT,,Upper Division Math,,,
-ECS 120,"Gysel, Robert",Theory Computation,MWF 12:10p-1:00p,1344 Storer,
-ECS 122A,"Filkov, Vladimir",Algorithm Design,MWF 11:00a-11:50a,234 Wellman,
-ECS 132,"Matloff, Norm",Probability and Statistical Modeling for CS,TR 10:30a-11:50a,168 Hoagland,
-ECS 140A,"Su, Zhendong",Programming Languages,TR 9:00a-10:20a,1002 Giedt,
-ECS 150,"Levitt, Karl",Operating Systems,MW 5:10p-6:30p,6 Olson,
-ECS 152A,"Mukherjee, Biswanath",Computer Networks,TR 1:40p-3:00p,166 Chem,
-ECS 154A,"Butner, Matt",Computer Architecture,MWF 2:10p-3:00p,1002 Giedt,
-ECS 154B,"Farrens, Matt",Computer Architecture,TR 12:10p-1:30p,168 Hoagland,
-ECS 158,"Matloff, Norm",Parallel Architecture,TR 4:40p-6:00p,147 Olson,
-ECS 160,"Nitta, Christopher",Intro to Software Engineering,MWF 10:00a-10:50a,234 Wellman,
-ECS 175,"Hamann, Bernd",Computer Graphics,TR 6:10p-7:30p,158 Olson,
-ECS 188-001,"Rogaway, Phil",Ethics in an Age of Technology,MWF 12:10p-1:00p,1132 Bainer,
-ECS 188-002,"Rogaway, Phil",Ethics in an Age of Technology,MWF 3:10p-4:00p,1116 Hart,
-ECS 192,Department,Internship in Comp Sci,TBA,TBA,
-ECS 193A,"Liu, Xin",Senior Design Project,R 1:10p-3:00p,115 Hutchison,
-ECS 197T,Department,Tutoring in Computer Science,TBA,TBA,
+COURSE ,INSTRUCTOR,TITLE,TIME,ROOM
+Announcements,,,,
+ECS 010,"Butner, M ",Intro to Programming,"10:00 - 10:50 AM, MWF",CHEM 17
+ECS 015,The Staff,Intro to Computers,"10:00 - 10:50 AM, MWF",SCILAB 202
+ECS 020,"Max, N ",Discrete Math for CS,"9:00 - 9:50 AM, F",GIEDT 100
+ECS 030,"Bishop, M ",Programming&Prob Solving,"10:00 - 10:50 AM, MWF",HOAGLD 16
+ECS 040,"Gygi, F ",Software &Obj-Orient Prg,"12:10 - 1:30 PM, TR",HUTCH 11
+ECS 050,"Butner, M ",Machine Dependent Prog,"4:10 - 5:00 PM, T",GIEDT 100
+ECS 060,"Davis, S ",Data Structures and Prog,"4:10 - 5:00 PM, M",WELLMN 
+ECS 092,The Staff,Internship In Comp Sci,	,TB
+ECS 098,The Staff,Directed Gp Study,	,TB
+ECS 099,The Staff,Special Study,"10:30 - 11:50 AM, TR",TB
+ECS 120,The Staff,Theory Computation,"10:00 - 10:50 AM, M",HARING 122
+ECS 122A,"Gusfield, D ",Algorithm Design,"4:10 - 5:00 PM, R",WELLMN 10
+ECS 124,"Tagkopoulos, I ",Bioinformatics,"5:10 - 6:00 PM, M",ART 21
+ECS 132,"Ghosal, D ",Prob & Sta Model for CS,"4:10 - 5:00 PM, F",RESSLR 5
+ECS 140A,"Su, Z ",Programming Languages,"3:10 - 4:00 PM, W",HUNT 10
+ECS 152A,"Ghosal, D ",Computer Networks,"10:00 - 10:50 AM, F",WELLMN 22
+ECS 154A,"Davis, S ",Computer Architecture,"4:10 - 5:00 PM, W",SCRBOK 16
+ECS 160,"Nitta, C ",Software Engineering,"9:00 - 10:20 AM, TR",WELLMN 10
+ECS 171,"Tagkopoulos, I ",Machine Learning,"4:40 - 6:00 PM, TR",CHEM 16
+ECS 175,"Hamann, B ",Computer Graphics,"12:10 - 1:00 PM, F",OLSON 11
+ECS 188,"Franklin, M ",Ethics in an Age of Tech,"2:10 - 3:00 PM, MWF",TB
+ECS 190C,The Staff,Research Group Conf,	,TB
+ECS 192,The Staff,Intern In Cmptr Sci,	,TB
+ECS 197T,The Staff,Tutoring in CS,	,TB
+ECS 198,The Staff,Directed Gp Study,	,TB
+ECS 199,The Staff,Special Study,"3:10 - 4:00 PM, M",TB
+ECS 201A,"Farrens, M ",Computer Architecture,"1:40 - 3:00 PM, TR",WELLMN 21
+ECS 221,"Tagkopoulos, I ",Comp Meth Sys & Syn Bio,"9:00 - 10:20 AM, TR",TB
+ECS 222A,"Filkov, V ",Analysis of Algorithms,"12:10 - 1:30 PM, TR",TB
+ECS 223,"Amenta, A ",Parallel Algorithms,TBA,CRUESS 10
+ECS 260,"Rubio Gonzalez, C ",Software Engineering,"4:40 - 6:00 PM, TR",TB
+ECS 289G,"Lee, Y ",Artificial Intell,	,HOAGLD 16
+ECS 290C,The Staff,Grad Res Gp Conf,"2:10 - 3:00 PM, R",TB
+ECS 293A,"Nitta, C ",Research in Computer Sci,	,CRUESS 10
+ECS 298,The Staff,Group Study,	,TB
+ECS 299,The Staff,Research,"4:10 - 5:00 PM, M",TB
+ECS 390,"Davis, S ",Teach Comp Sci,	,OLSON 14
